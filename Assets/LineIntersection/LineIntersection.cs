@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class RayIntersectWithPlane : MonoBehaviour
+public class LineIntersection : MonoBehaviour
 {
 
     public Transform playerTrans;
@@ -37,7 +37,6 @@ public class RayIntersectWithPlane : MonoBehaviour
         if(Mathf.Approximately(Vector3.Dot(l, n), 0))
         {
             Debug.Log("no intersection");
-            
         }
         else
         {

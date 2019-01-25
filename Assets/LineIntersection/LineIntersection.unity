@@ -508,9 +508,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1b03b97085361b5438ca32397598a957, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerTrans: {fileID: 0}
-  planeTrans: {fileID: 0}
-  lineRenderer: {fileID: 0}
+  line1: {fileID: 75131251}
+  line2: {fileID: 1711200716}
+  intersectionObject: {fileID: 185142060}
 --- !u!1 &803650504
 GameObject:
   m_ObjectHideFlags: 0
@@ -778,7 +778,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1420940571}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2.25, y: 0, z: -4.35}
+  m_LocalPosition: {x: -3.6, y: 0, z: -4.35}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}

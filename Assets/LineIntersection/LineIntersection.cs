@@ -18,6 +18,7 @@ public class LineIntersection : MonoBehaviour
             if(CSMath.IsLineToLineIntersect(line1.GetPosition(0), line1.GetPosition(1), line2.GetPosition(0), line2.GetPosition(1), out intersection))
             {
                 intersectionObject.SetActive(true);
+                intersectionObject.transform.position = intersection;
             }
             else
             {

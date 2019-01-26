@@ -37,7 +37,17 @@ public class CSMath : MonoBehaviour
             return false;
         }
         Debug.Log("two lines intersect");
-        intersection = Vector3.zero;
+
+        Vector3 linePerpen32 = Vector3.Cross(line2Dir,line3);
+        //linePerpen12 parallel to linePerpen32
+        float area12MArea32 = Vector3.Dot(linePerpen12, linePerpen32);
+        float area12Sqrt = linePerpen12.sqrMagnitude;
+        //s = ratio of height of triangle l2 and p in triangle l2l1
+        //namely the area of these two triangle
+        //this is the same as |linePerpen32| / |linePerpen12|
+        float s = area12MArea32/ area12Sqrt;
+
+        intersection = line1Start + line1Dir * s;
         return true;
     }
 }

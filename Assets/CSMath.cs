@@ -4,8 +4,10 @@ using UnityEngine;
 
 public class CSMath : MonoBehaviour
 {
-    public static bool IsLineToLineIntersect(Vector3 line1Start,Vector3 line1End, Vector3 line2Start,Vector3 line2End,out Vector3 intersection)
+    public static bool IsLineToLineIntersect(Vector3 line1Start, Vector3 line1End, Vector3 line2Start, Vector3 line2End, out Vector3 intersection)
     {
+
+        intersection = Vector3.zero;
         Vector3 line1Dir = line1End - line1Start;
         Vector3 line2Dir = line2End - line2Start;
         Vector3 line3 = line1Start - line2Start;//any two position on 1 and 2 would work
@@ -18,8 +20,6 @@ public class CSMath : MonoBehaviour
             if (line1Start == line2Start)
             {
                 Debug.Log("two lines are overlap");
-
-                intersection = Vector3.zero;
                 return false;
             }
             Debug.Log("two lines parallel to each other");
@@ -29,25 +29,41 @@ public class CSMath : MonoBehaviour
         //find the line4 perpendicular to l1 and l2
         //if l4 also perpendicular to l3, then l1 and l2 on the same plane
         float line3DotLinePerpen12 = Vector3.Dot(line3, linePerpen12);
-        bool isCorplaner = Mathf.Approximately(line3DotLinePerpen12,0);
+        bool isCorplaner = Mathf.Approximately(line3DotLinePerpen12, 0);
         if (!isCorplaner)
         {
             Debug.Log("two lines are not on the same plane");
-            intersection = Vector3.zero;
             return false;
         }
         Debug.Log("two lines intersect");
 
-        Vector3 linePerpen32 = Vector3.Cross(line2Dir,line3);
+        Vector3 linePerpen32 = Vector3.Cross(line2Dir, line3);
         //linePerpen12 parallel to linePerpen32
         float area12MArea32 = Vector3.Dot(linePerpen12, linePerpen32);
         float area12Sqrt = linePerpen12.sqrMagnitude;
         //s = ratio of height of triangle l2 and p in triangle l2l1
         //namely the area of these two triangle
         //this is the same as |linePerpen32| / |linePerpen12|
-        float s = area12MArea32/ area12Sqrt;
+        float s = area12MArea32 / area12Sqrt;
 
         intersection = line1Start + line1Dir * s;
+        return true;
+    }
+
+    public static bool IsLineToPlaneIntersect(Vector3 lineStart, Vector3 lineDir, Vector3 planeNormal, Vector3 planePoint, out Vector3 intersection)
+    {
+
+        intersection = Vector3.zero;
+        float distanceOfLineDir = Vector3.Dot(lineDir, planeNormal);
+        if (Mathf.Approximately(distanceOfLineDir,0))
+        {
+            Debug.Log("line parallel to plane");
+            return false;
+        }
+        Debug.Log("line intersect to plane");
+        float distanceToPlane = Vector3.Dot(( planePoint- lineStart), planeNormal);
+        float t =  distanceToPlane/ distanceOfLineDir;
+        intersection = lineStart + lineDir * t;
         return true;
     }
 }

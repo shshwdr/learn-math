@@ -163,8 +163,8 @@ Camera:
   near clip plane: 0.3
   far clip plane: 1000
   field of view: 60
-  orthographic: 0
-  orthographic size: 5
+  orthographic: 1
+  orthographic size: 13.26
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -297,6 +297,7 @@ GameObject:
   - component: {fileID: 953489835}
   - component: {fileID: 953489834}
   - component: {fileID: 953489833}
+  - component: {fileID: 953489837}
   m_Layer: 0
   m_Name: ball
   m_TagString: Untagged
@@ -376,6 +377,23 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &953489837
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 953489832}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3de6deb4b94eaab47a79b360db2f7784, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  boardHeight: 20
+  boardWidth: 20
+  height: 1
+  width: 1
+  moveDir: {x: 0.1, y: 0.2, z: 0}
 --- !u!1 &1008191475
 GameObject:
   m_ObjectHideFlags: 0

@@ -17,6 +17,34 @@ public class AABBBall : MonoBehaviour
     }
     bool CheckBounds()
     {
+        if (transform.position.y + boardHeight / 2 - height / 2 <= 0)
+        {
+            Vector3 pos  = transform.position + new Vector3(0, 0.1f, 0);
+            transform.position = pos;
+            moveDir = new Vector3(moveDir.x, -moveDir.y, 0);
+            return true;
+        }
+        if (transform.position.y - boardHeight / 2 + height / 2 >= 0)
+        {
+            Vector3 pos = transform.position - new Vector3(0, 0.1f, 0);
+            transform.position = pos;
+            moveDir = new Vector3(moveDir.x, -moveDir.y, 0);
+            return true;
+        }
+        if (transform.position.x + boardWidth / 2 - width / 2 <= 0)
+        {
+            Vector3 pos = transform.position + new Vector3(0.1f, 0,0);
+            transform.position = pos;
+            moveDir = new Vector3(-moveDir.x, moveDir.y, 0);
+            return true;
+        }
+        if (transform.position.x - boardWidth / 2 + width / 2 >= 0)
+        {
+            Vector3 pos = transform.position - new Vector3(0.1f, 0, 0);
+            transform.position = pos;
+            moveDir = new Vector3(-moveDir.x, moveDir.y, 0);
+            return true;
+        }
         return false;
     }
     // Update is called once per frame
